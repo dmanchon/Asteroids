@@ -5,7 +5,6 @@ end
 
 function love.draw()
    draw_ship(xpos,ypos)
-   love.graphics.print("Asteroids test...",400,300)
  
    xmax = xpos + ship:getImageData():getWidth()
    ymax = ypos + ship:getImageData():getHeight()
@@ -15,10 +14,8 @@ function love.draw()
 
    if xmax > w  then
       draw_ship(xmax-w,ypos)
-      love.graphics.print("OK1",100,100)
    elseif ymax > h then
       draw_ship(xpos,ymax-h)
-      love.graphics.print("OK2",200,100)
    end
    
    if ypos > (ship:getImageData():getHeight()+h) then
@@ -32,19 +29,10 @@ end
 function love.update(dt)
    xpos = xpos + dt*50
    ypos = ypos + dt*50
-   
-   
-
- 
-
 
 end
 
 function love.load()
-   --love.graphics.setScissor( 0, 0, 640, 480 )
-
-
-
    ship = love.graphics.newCanvas(40,30)
    love.graphics.setCanvas(ship)
    love.graphics.setColor(255,255,255)
@@ -53,6 +41,7 @@ function love.load()
 			 20, 30, 
 			 40, 0,
 			 20,10)
+
    love.graphics.setCanvas()
    love.graphics.setColor(255,255,255)
 
