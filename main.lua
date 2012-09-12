@@ -5,7 +5,7 @@ end
 
 function love.draw()
    draw_ship(xpos,ypos)
-   love.graphics.print("Asteroids test...",400,300)
+   love.graphics.print("Asteroids test..",400,300)
  
    xmax = xpos + ship:getImageData():getWidth()
    ymax = ypos + ship:getImageData():getHeight()
