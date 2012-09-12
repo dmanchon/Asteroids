@@ -20,7 +20,7 @@ function love.draw()
       x_a = w-xpos
       x_b = ship:getImageData():getWidth()-x_a
    else
-      x_a = -xpos
+      x_a = xpos
       x_b = ship:getImageData():getWidth()-x_a
    end
 
@@ -28,7 +28,7 @@ function love.draw()
       y_a = h-ypos
       y_b= ship:getImageData():getHeight() - y_a
    else
-      y_a = -ypos
+      y_a = ypos
       y_b= ship:getImageData():getHeight() - y_a
    end
 
@@ -40,9 +40,9 @@ function love.draw()
    elseif y_b > 0 then
       draw_ship(xpos,-y_a)
    elseif y_a < 0 then
-      draw_ship(xpos,h-y_a)
+      draw_ship(xpos,h+y_a)
    elseif x_a < 0 then
-      draw_ship(ypos,w-x_a)
+      draw_ship(ypos,w+x_a)
    end
    
    -- take care of corners case
@@ -52,7 +52,7 @@ function love.draw()
       xpos = 0
    end
 
-   love.graphics.print(tostring(love.timer.getFPS( )).."FPS", w-70,20)
+   love.graphics.print(tostring(love.timer.getFPS( )).."FPS, x="..tostring(xpos)..", y="..tostring(ypos), w-200,20)
 
 end
 
