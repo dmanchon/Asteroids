@@ -1,5 +1,24 @@
 function draw_ship(x,y)
+
+
+  ship = love.graphics.newCanvas(50,50)
+   love.graphics.setCanvas(ship)
+
+   love.graphics.setColor(255,255,255)
+   love.graphics.setLineWidth(3)
+   love.graphics.polygon('line', 
+			 0, 0, 
+			 15, 30, 
+			 30, 0,
+			 15,10)
+
+   love.graphics.setCanvas()
+   love.graphics.setColor(255,255,255)
+
+
    love.graphics.draw(ship, x, y)
+   
+   
 end
 
 
@@ -16,6 +35,11 @@ function love.draw()
    w = love.graphics.getWidth()
    h = love.graphics.getHeight()
 
+
+  
+love.graphics.rectangle('fill', 100, 0, 10, 10)
+
+
    if (xpos > 0) then
       x_a = w-xpos
       x_b = ship:getImageData():getWidth()-x_a
@@ -24,7 +48,7 @@ function love.draw()
       end
    else
       x_a = -xpos
-      x_b = ship:getImageData():getWidth() - x_a
+      --x_b = ship:getImageData():getWidth() - x_a
       if x_a > 0 then
 	 draw_ship(w-x_a,ypos)
       end
@@ -38,7 +62,7 @@ function love.draw()
       end
    else
       y_a = -ypos
-      y_b= ship:getImageData():getHeight() - y_a
+      --y_b= ship:getImageData():getHeight() - y_a
       if y_a > 0 then
 	 draw_ship(xpos,h-y_a)
       end
@@ -55,7 +79,6 @@ function love.draw()
       xpos = w-x_a
    end
 
-   love.graphics.print("x_a="..tostring(x_a), w-400,30)
 
 end
 
@@ -73,15 +96,17 @@ function love.update(dt)
       val2 = val2 + dt
    end 
 
-
+   angle = angle+dt*0.1
    xpos = xpos + val2
    ypos = ypos + val
 
 end
 
 function love.load()
-   ship = love.graphics.newCanvas(40,30)
+   --ship = love.graphics.newCanvas(40,30)
+   ship = love.graphics.newCanvas(50,50)
    love.graphics.setCanvas(ship)
+
    love.graphics.setColor(255,255,255)
    love.graphics.setLineWidth(3)
    love.graphics.polygon('line', 
@@ -100,5 +125,9 @@ function love.load()
    val2 = 0
    xpos=0
    ypos=0
+
+   angle = 0
+   
+
 end
 
